@@ -1,4 +1,6 @@
 class RailsGraphqlNplus1Schema < GraphQL::Schema
+  use(BatchLoader::GraphQL)
+
   mutation(Types::MutationType)
   query(Types::QueryType)
 
