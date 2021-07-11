@@ -8,7 +8,7 @@ module Types
 
     field :departments, [Types::DepartmentType], null: true
 
-    field :roles, [Types::RoleType], null: true
+    field :roles, Types::RoleType.connection_type, null: true
     def roles
       Role.joins(employees: [department: :company]).where('companies.id = ?', object.id).distinct
     end
