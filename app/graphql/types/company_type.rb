@@ -17,7 +17,6 @@ module Types
 
     field :roles, Types::RoleType.connection_type, null: true
     def roles
-      Role.joins(employees: [department: :company]).where('companies.id = ?', object.id).distinct
       BatchLoader::GraphQL.for(object.id).batch(default_value: []) do |company_ids, loader|
         Role.joins(employees: [department: :company]).reselect('roles.*, companies.id as company_id')
             .where('companies.id IN (?)', company_ids).distinct.each do |role|
