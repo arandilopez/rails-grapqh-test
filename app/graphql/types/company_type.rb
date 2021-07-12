@@ -6,7 +6,7 @@ module Types
     field :created_at, GraphQL::Types::ISO8601DateTime, null: false
     field :updated_at, GraphQL::Types::ISO8601DateTime, null: false
 
-    field :departments, [Types::DepartmentType], null: true
+    field :departments, Types::DepartmentType.connection_type, null: true
 
     field :roles, Types::RoleType.connection_type, null: true
     def roles
