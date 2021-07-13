@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# See https://gitlab.com/gitlab-org/gitlab/-/blob/master/spec/support/helpers/query_recorder.rb
 module ActiveRecord
   class QueryRecorder
     attr_reader :log, :skip_cached, :skip_schema_queries, :cached, :data
