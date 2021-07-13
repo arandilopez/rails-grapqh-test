@@ -38,6 +38,7 @@ class CompaniesQueryTest < ActionDispatch::IntegrationTest
       post graphql_url, params: { query: query }
     end
 
+    # Expect 4 queries, one for each related model: Company, Department, Employee, Role
     assert_equal recorder.count, 4
   end
 end
